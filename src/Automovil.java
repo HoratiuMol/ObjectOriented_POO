@@ -7,6 +7,10 @@ public class Automovil{
     private double cilindrada;
     private int capacidadEstanque=40;
 
+    private  static  int capacidadEstanqueEstatico=30;
+
+    private static String colorPatente="Naranja";//al ser STATIC le pertenece a la clase y no al objeto
+
 
     //distintas formas de implementar, mediante constructor o mediante gettersetter
 
@@ -32,6 +36,10 @@ public class Automovil{
         this.color = color;
         this.cilindrada = cilindrada;
         this.capacidadEstanque = capacidadEstanque;
+    }
+
+    public Automovil() {
+
     }
 
     public String getFabricante() {
@@ -74,13 +82,21 @@ public class Automovil{
         this.capacidadEstanque = capacidadEstanque;
     }
 
+
+    public static  String getColorPatente(){
+        return colorPatente;
+    }
+    public static void setColorPatente(String colorPatente){
+        Automovil.colorPatente = colorPatente;
+    }
     public String detalle(){
 //this se usa para atributo de clase no para atributo local
 
       return "\nauto.fabricante = " + this.fabricante +
                 "\nauto.modelo = " + this.modelo +
                 "\nauto.color = " + this.color +
-                "\nauto.cilindrada = " + this.cilindrada;
+                "\nauto.cilindrada = " + this.cilindrada +
+                "\nauto.patenteColor= "+ colorPatente;
          //el return es importante para devolver ya que no es void
 
     }
@@ -106,6 +122,11 @@ public class Automovil{
 
         return km/(porcentajeBencina*capacidadEstanque);
 
+    }
+
+    public static float calcularConsumoEstatico(int km, float porcentajeBencina){
+
+        return km/(porcentajeBencina*Automovil.capacidadEstanqueEstatico);
 
     }
 
@@ -115,5 +136,31 @@ public class Automovil{
 
     }
 
+    @Override
+    public boolean equals(Object obj) {
+
+        if(this == obj){
+            return true;
+        }
+
+        if(!(obj instanceof Automovil)){
+            return false;
+        }
+
+        Automovil a=(Automovil) obj; //debremos tener el objeto a tipo Automovil porque siempre comparas mismos tipos
+        return (this.fabricante != null && this.modelo != null
+        && this.fabricante.equals(a.getFabricante()) && this.modelo.equals((a.getModelo())));
+    }
+
+    @Override
+    public String toString() {
+        return "Automovil{" +
+                "fabricante='" + fabricante + '\'' +
+                ", modelo='" + modelo + '\'' +
+                ", color='" + color + '\'' +
+                ", cilindrada=" + cilindrada +
+                ", capacidadEstanque=" + capacidadEstanque +
+                '}';
+    }
     //si se tiene dos metodos llamados iguales pero ocn distintos parametro, se denomino "Sobrecarga de Métodos"
 }

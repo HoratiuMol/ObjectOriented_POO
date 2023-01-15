@@ -1,4 +1,4 @@
-public class EjemploAutomovil {
+public class EjemploAutomovilStatic {
 
     public static void main(String[] args) {
 
@@ -17,23 +17,16 @@ public class EjemploAutomovil {
 
         Automovil nissan2=new Automovil("Nissan", "Navarra", "gris oscuro", 3.5, 50 );
 
+        Automovil.setColorPatente("azul");
+
         Automovil auto = new Automovil();
 
-        System.out.println("son iguales? " + (nissan==nissan2));
-        System.out.println("son iguales con equals y Override? " + (nissan.equals(nissan2)));
-
-        System.out.println(auto.equals("fecha"));
-        System.out.println(nissan);
-        System.out.println(nissan.toString());
-
-        System.out.println(subaru.acelerar(3000));
-        System.out.println(subaru.frenar());
+        System.out.println(subaru.detalle());
         System.out.println(nissan.detalle());
         System.out.println(mazda.detalle());
 
-        System.out.println("kilometros por litro " + subaru.calcularConsumo(300, 0.6f));
-
-        System.out.println("kilometros por litro " + subaru.calcularConsumo(300, 60));
+        System.out.println(nissan2.detalle());
+        System.out.println("Automovil.getColorPatente() = " + Automovil.getColorPatente());
 
     }
 
