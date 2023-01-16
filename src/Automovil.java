@@ -1,6 +1,7 @@
 public class Automovil{
     //estos son atributos, no métodos
 
+    private int id;
     private String fabricante;
     private String modelo;
     private String color = "red";
@@ -10,12 +11,30 @@ public class Automovil{
     private  static  int capacidadEstanqueEstatico=30;
 
     private static String colorPatente="Naranja";//al ser STATIC le pertenece a la clase y no al objeto
+    private static int ultimoId; //al ser int parte de 0, no hace falta inicializar
+
+    public static final Integer VELOCIDAD_MAX_CARRETERA = 120; //cte que no se puede modificar
+    public static final int VELOCIDAD_MAX_CIUDAD=60; //es constante, y no se puede declarar dentro de una clase
+
+
+    public static final  String COLOR_ROJO="rojo";
+    public static final  String COLOR_AMARILLO="amarillo";
+    public static final  String COLOR_AZUL="azul";
+    public static final  String COLOR_BLANCO="blanco";
+    public static final  String COLOR_GRIS="gris";
 
 
     //distintas formas de implementar, mediante constructor o mediante gettersetter
 
-    public Automovil(String fabricante, String modelo){
+    public Automovil(){
         //no hace nada, tan solo nos permite crear un parámetro vacio
+        this.id = ++ultimoId;
+    }
+
+    public Automovil(String fabricante, String modelo){
+        this();
+        this.fabricante= fabricante;
+        this.modelo=modelo;
     }
 
     public Automovil(String fabricante, String modelo, String color){
@@ -38,9 +57,6 @@ public class Automovil{
         this.capacidadEstanque = capacidadEstanque;
     }
 
-    public Automovil() {
-
-    }
 
     public String getFabricante() {
         return fabricante;
@@ -89,14 +105,25 @@ public class Automovil{
     public static void setColorPatente(String colorPatente){
         Automovil.colorPatente = colorPatente;
     }
+
+
+    public static int getCapacidadEstanqueEstatico() {
+        return capacidadEstanqueEstatico;
+    }
+
+    public static void setCapacidadEstanqueEstatico(int capacidadEstanqueEstatico) {
+        Automovil.capacidadEstanqueEstatico = capacidadEstanqueEstatico;
+    }
+
     public String detalle(){
 //this se usa para atributo de clase no para atributo local
 
-      return "\nauto.fabricante = " + this.fabricante +
-                "\nauto.modelo = " + this.modelo +
+      return "\nauto.fabricante = " + this.getFabricante() +
+                "\nauto.modelo = " + this.getModelo() +
                 "\nauto.color = " + this.color +
                 "\nauto.cilindrada = " + this.cilindrada +
-                "\nauto.patenteColor= "+ colorPatente;
+                "\nauto.patenteColor= "+ colorPatente +
+                "\nauto.id = " + this.id;
          //el return es importante para devolver ya que no es void
 
     }
@@ -154,7 +181,7 @@ public class Automovil{
 
     @Override
     public String toString() {
-        return "Automovil{" +
+        return "Automovil{ id " + this.id +
                 "fabricante='" + fabricante + '\'' +
                 ", modelo='" + modelo + '\'' +
                 ", color='" + color + '\'' +
