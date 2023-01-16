@@ -4,13 +4,18 @@ public class Automovil{
     private int id;
     private String fabricante;
     private String modelo;
-    private String color = "red";
+    private Color color = Color.GRIS;
     private double cilindrada;
-    private int capacidadEstanque=40;
+    private Estanque estanque;
+    private  Persona propietario;
+    private Rueda[] ruedas;
+    private Motor motor;
+
+    private TipoAutomovil tipo;
 
     private  static  int capacidadEstanqueEstatico=30;
 
-    private static String colorPatente="Naranja";//al ser STATIC le pertenece a la clase y no al objeto
+    private static Color colorPatente=Color.NARANJO;//al ser STATIC le pertenece a la clase y no al objeto
     private static int ultimoId; //al ser int parte de 0, no hace falta inicializar
 
     public static final Integer VELOCIDAD_MAX_CARRETERA = 120; //cte que no se puede modificar
@@ -37,24 +42,30 @@ public class Automovil{
         this.modelo=modelo;
     }
 
-    public Automovil(String fabricante, String modelo, String color){
+    public Automovil(String fabricante, String modelo, Color color){
         this(fabricante, modelo);
         this.color= color;
     }
 
-    public Automovil(String fabricante, String modelo, String color, double cilindrada) {
+    public Automovil(String fabricante, String modelo, Color color, Motor motor) {
         this.fabricante = fabricante;
         this.modelo = modelo;
         this.color = color;
-        this.cilindrada = cilindrada;
+        this.motor = motor;
     }
 
-    public Automovil(String fabricante, String modelo, String color, double cilindrada, int capacidadEstanque) {
+    public Automovil(String fabricante, String modelo, Color color, Estanque estanque, Persona propietario, Rueda[] ruedas, Motor motor) {
+        this(fabricante, modelo, color, motor, estanque);
+        this.propietario = propietario;
+        this.ruedas = ruedas;
+    }
+
+    public Automovil(String fabricante, String modelo, Color color, Motor motor, Estanque estanque) {
         this.fabricante = fabricante;
         this.modelo = modelo;
         this.color = color;
-        this.cilindrada = cilindrada;
-        this.capacidadEstanque = capacidadEstanque;
+        this.motor = motor;
+        this.estanque = estanque;
     }
 
 
@@ -74,35 +85,19 @@ public class Automovil{
         this.modelo = modelo;
     }
 
-    public String getColor() {
+    public Color getColor() {
         return color;
     }
 
-    public void setColor(String color) {
+    public void setColor(Color color) {
         this.color = color;
     }
 
-    public double getCilindrada() {
-        return cilindrada;
-    }
 
-    public void setCilindrada(double cilindrada) {
-        this.cilindrada = cilindrada;
-    }
-
-    public int getCapacidadEstanque() {
-        return capacidadEstanque;
-    }
-
-    public void setCapacidadEstanque(int capacidadEstanque) {
-        this.capacidadEstanque = capacidadEstanque;
-    }
-
-
-    public static  String getColorPatente(){
+    public static  Color getColorPatente(){
         return colorPatente;
     }
-    public static void setColorPatente(String colorPatente){
+    public static void setColorPatente(Color colorPatente){
         Automovil.colorPatente = colorPatente;
     }
 
@@ -115,13 +110,48 @@ public class Automovil{
         Automovil.capacidadEstanqueEstatico = capacidadEstanqueEstatico;
     }
 
+    public Estanque getEstanque() {
+        return estanque;
+    }
+
+    public void setEstanque(Estanque estanque) {
+        this.estanque = estanque;
+    }
+
+    public Persona getPropietario() {
+        return propietario;
+    }
+
+    public void setPropietario(Persona propietario) {
+        this.propietario = propietario;
+    }
+
+    public Rueda[] getRuedas() {
+        return ruedas;
+    }
+
+    public void setRuedas(Rueda[] ruedas) {
+        this.ruedas = ruedas;
+    }
+
+    public Motor getMotor() {
+        return motor;
+    }
+
+    public void setMotor(Motor motor) {
+        this.motor = motor;
+    }
+
     public String detalle(){
 //this se usa para atributo de clase no para atributo local
 
+
+
       return "\nauto.fabricante = " + this.getFabricante() +
                 "\nauto.modelo = " + this.getModelo() +
+                /*"\nauto.tipo = " + this.getTipo().getDescripcion() +*/
                 "\nauto.color = " + this.color +
-                "\nauto.cilindrada = " + this.cilindrada +
+                "\nauto.cilindrada = " + this.motor.getCilindrada() +
                 "\nauto.patenteColor= "+ colorPatente +
                 "\nauto.id = " + this.id;
          //el return es importante para devolver ya que no es void
@@ -147,7 +177,7 @@ public class Automovil{
 
     public float calcularConsumo(int km, float porcentajeBencina){
 
-        return km/(porcentajeBencina*capacidadEstanque);
+        return km/(porcentajeBencina*estanque.getCapacidad());
 
     }
 
@@ -159,7 +189,7 @@ public class Automovil{
 
     public float calcularConsumo(int km, int porcentajeBencina){
 
-        return km/((porcentajeBencina/100f)*capacidadEstanque);
+        return km/((porcentajeBencina/100f)*estanque.getCapacidad());
 
     }
 
@@ -186,8 +216,17 @@ public class Automovil{
                 ", modelo='" + modelo + '\'' +
                 ", color='" + color + '\'' +
                 ", cilindrada=" + cilindrada +
-                ", capacidadEstanque=" + capacidadEstanque +
+                ", capacidadEstanque=" + estanque.getCapacidad() +
                 '}';
     }
     //si se tiene dos metodos llamados iguales pero ocn distintos parametro, se denomino "Sobrecarga de Métodos"
+
+
+    public TipoAutomovil getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoAutomovil tipo) {
+        this.tipo = tipo;
+    }
 }

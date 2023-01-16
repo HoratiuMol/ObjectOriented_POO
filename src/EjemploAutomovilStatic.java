@@ -1,23 +1,29 @@
+import java.util.concurrent.TimeUnit;
+
 public class EjemploAutomovilStatic {
 
     public static void main(String[] args) {
 
         Automovil subaru=new Automovil("Subaru", "Impresa");
 
-        subaru.setCilindrada(2.0);
-        subaru.setColor(Automovil.COLOR_BLANCO);
+        subaru.setMotor(new Motor(2.0, TipoMotor.BENCINA));
+        subaru.setColor(Color.BLANCO);
+        subaru.setTipo(TipoAutomovil.HATCHBACK);
+
         System.out.println("Velocidad maxima carretera : " + Automovil.VELOCIDAD_MAX_CARRETERA);
         System.out.println("Velocidad maxima ciudad : " + Automovil.VELOCIDAD_MAX_CIUDAD);
 
-        Automovil mazda= new Automovil("Mazda", "BY-50" , Automovil.COLOR_ROJO);
+        Automovil mazda= new Automovil("Mazda", "BY-50" , Color.ROJO);
 
-        mazda.setCilindrada(3.0);
+        mazda.setMotor(new Motor(2.0, TipoMotor.BENCINA));
         System.out.println("");
 
 
-        Automovil nissan=new Automovil("Nissan", "Navarra", Automovil.COLOR_GRIS, 3.5, 50 );
-        Automovil nissan2=new Automovil("Nissan", "Navarra", Automovil.COLOR_GRIS, 3.5, 50 );
-        Automovil.setColorPatente(Automovil.COLOR_AZUL);
+        Automovil nissan=new Automovil("Nissan", "Navarra", Color.GRIS, new Motor(3.0, TipoMotor.DIESEL), new Estanque(45) );
+        nissan.setTipo(TipoAutomovil.HATCHBACK);
+        Automovil nissan2=new Automovil("Nissan", "Navarra", Color.GRIS, new Motor(3.0, TipoMotor.DIESEL), new Estanque(60) );
+        nissan2.setTipo(TipoAutomovil.FURGON);
+        Automovil.setColorPatente(Color.AZUL);
         Automovil.setCapacidadEstanqueEstatico(45);
         Automovil auto = new Automovil();
 
@@ -28,6 +34,10 @@ public class EjemploAutomovilStatic {
 
         System.out.println("Automovil.getColorPatente() = " + Automovil.getColorPatente());
         System.out.println("kilometros por litro = "  + Automovil.calcularConsumoEstatico(300,60));
+
+        TipoAutomovil tipoSubaru = subaru.getTipo();
+        System.out.println();
+        System.out.println("tipo subaru = " + tipoSubaru.getNombre());
 
     }
 

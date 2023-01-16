@@ -4,18 +4,19 @@ public class EjemploAutomovil {
 
         Automovil subaru=new Automovil("Subaru", "Impresa");
 
-        subaru.setCilindrada(2.0);
-        subaru.setColor("Blanco");
+        subaru.setMotor(new Motor(2.0, TipoMotor.BENCINA));
+        subaru.setColor(Color.BLANCO);
 
-        Automovil mazda= new Automovil("Mazda", "BY-50" , "Rojo");
+        Automovil mazda= new Automovil("Mazda", "BY-50" , Color.AZUL);
 
-        mazda.setCilindrada(3.0);
+        mazda.setMotor(new Motor(2.0, TipoMotor.BENCINA));
+        subaru.setEstanque(new Estanque());
         System.out.println("");
 
 
-        Automovil nissan=new Automovil("Nissan", "Navarra", "gris oscuro", 3.5, 50 );
+        Automovil nissan=new Automovil("Nissan", "Navarra", Color.ROJO, new Motor(3.0, TipoMotor.DIESEL), new Estanque(74) );
 
-        Automovil nissan2=new Automovil("Nissan", "Navarra", "gris oscuro", 3.5, 50 );
+        Automovil nissan2=new Automovil("Nissan", "Navarra", Color.BLANCO, new Motor(3.0, TipoMotor.DIESEL), new Estanque(45) );
 
         Automovil auto = new Automovil();
 
