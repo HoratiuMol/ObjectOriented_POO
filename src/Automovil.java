@@ -9,7 +9,10 @@ public class Automovil{
     private Estanque estanque;
     private  Persona propietario;
     private Rueda[] ruedas;
+    private int indiceRuedas;
     private Motor motor;
+
+    private Persona conductor;
 
     private TipoAutomovil tipo;
 
@@ -34,6 +37,7 @@ public class Automovil{
     public Automovil(){
         //no hace nada, tan solo nos permite crear un parámetro vacio
         this.id = ++ultimoId;
+        this.ruedas = new Rueda[5];
     }
 
     public Automovil(String fabricante, String modelo){
@@ -138,12 +142,27 @@ public class Automovil{
         this.ruedas = ruedas;
     }
 
+    public Automovil  addRueda(Rueda rueda){
+        if(indiceRuedas < this.ruedas.length) { //este if se asegura que como maximo agreaga 5, da igual cuantas ruedas querramos mandar
+            this.ruedas[indiceRuedas++] = rueda;
+        }
+        return this;
+    }
+
     public Motor getMotor() {
         return motor;
     }
 
     public void setMotor(Motor motor) {
         this.motor = motor;
+    }
+
+    public Automovil(Persona propietario) {
+        this.propietario = propietario;
+    }
+
+    public void setConductor(Persona conductor) {
+        this.conductor = conductor;
     }
 
     public String detalle(){
@@ -160,6 +179,16 @@ public class Automovil{
                 "\nauto.cilindrada = " + this.motor.getCilindrada() +
                 "\nauto.patenteColor= "+ colorPatente +
                 "\nauto.id = " + this.id;
+
+      if(conductor != null){
+          detalle += "\nConductor Subaru: " + conductor;
+      }
+
+      if(getRuedas() != null) {
+          for (Rueda r : this.getRuedas()) {
+              detalle += "\n" + r.getFabricante() + ", aro: " + r.getAro() + " ancho: " + r.getAncho();
+          }
+      }
          //el return es importante para devolver ya que no es void
         return  detalle;
 
