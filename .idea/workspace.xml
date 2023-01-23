@@ -2,14 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bd5a9495-41a5-4913-8d01-bdee0a0a0190" name="Changes" comment="subidas">
-      <change afterPath="$PROJECT_DIR$/src/Color.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/EjemploAutomovilEnum.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Estanque.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Motor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Persona.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Rueda.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TipoAutomovil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/TipoMotor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Automovil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Automovil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EjemploAutomovil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/EjemploAutomovil.java" afterDir="false" />
@@ -104,7 +96,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673828517443</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="subidas">
+      <created>1673901452701</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1673901452701</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

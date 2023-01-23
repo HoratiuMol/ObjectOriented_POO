@@ -111,6 +111,10 @@ public class Automovil{
     }
 
     public Estanque getEstanque() {
+        if(estanque==null){
+            this.estanque = new Estanque(50);
+        }
+
         return estanque;
     }
 
@@ -147,14 +151,17 @@ public class Automovil{
 
 
 
-      return "\nauto.fabricante = " + this.getFabricante() +
-                "\nauto.modelo = " + this.getModelo() +
-                /*"\nauto.tipo = " + this.getTipo().getDescripcion() +*/
-                "\nauto.color = " + this.color +
+      String detalle= "\nauto.fabricante = " + this.getFabricante() +
+                "\nauto.modelo = " + this.getModelo();
+      if(this.getTipo()!=null) {
+          detalle += "\nauto.tipo = " + this.getTipo().getDescripcion();
+      }
+               detalle += "\nauto.color = " + this.color +
                 "\nauto.cilindrada = " + this.motor.getCilindrada() +
                 "\nauto.patenteColor= "+ colorPatente +
                 "\nauto.id = " + this.id;
          //el return es importante para devolver ya que no es void
+        return  detalle;
 
     }
 
@@ -189,7 +196,7 @@ public class Automovil{
 
     public float calcularConsumo(int km, int porcentajeBencina){
 
-        return km/((porcentajeBencina/100f)*estanque.getCapacidad());
+        return km/((porcentajeBencina/100f)*this.getEstanque().getCapacidad());
 
     }
 

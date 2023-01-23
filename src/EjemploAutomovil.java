@@ -7,6 +7,7 @@ public class EjemploAutomovil {
         subaru.setMotor(new Motor(2.0, TipoMotor.BENCINA));
         subaru.setColor(Color.BLANCO);
 
+
         Automovil mazda= new Automovil("Mazda", "BY-50" , Color.AZUL);
 
         mazda.setMotor(new Motor(2.0, TipoMotor.BENCINA));

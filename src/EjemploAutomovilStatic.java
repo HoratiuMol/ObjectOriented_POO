@@ -1,3 +1,4 @@
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 public class EjemploAutomovilStatic {
@@ -16,6 +17,7 @@ public class EjemploAutomovilStatic {
         Automovil mazda= new Automovil("Mazda", "BY-50" , Color.ROJO);
 
         mazda.setMotor(new Motor(2.0, TipoMotor.BENCINA));
+        //mazda.setEstanque(new Estanque(50));
         System.out.println("");
 
 
@@ -38,6 +40,8 @@ public class EjemploAutomovilStatic {
         TipoAutomovil tipoSubaru = subaru.getTipo();
         System.out.println();
         System.out.println("tipo subaru = " + tipoSubaru.getNombre());
+
+        System.out.println(mazda.calcularConsumo(300,70));
 
     }
 
